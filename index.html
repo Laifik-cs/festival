@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Голосование за любимое место в Томске</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Проголосуй за любимое место Томска!</h1>
+        </header>
+        
+        <div class="content">
+            <div class="map-section">
+                <div class="map-container">
+                    <img src="map3.png" alt="Карта Томска с местами для голосования" class="map-image">
+                    <div id="map"></div>
+                </div>
+            </div>
+            
+            <div class="info-section">
+                <div class="vote-container">
+                    <h2 class="vote-title">Голосование</h2>
+                    
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Поиск места...">
+                    </div>
+                    
+                    <ul class="places-list" id="placesList">
+                        <!-- Список мест будет добавлен через JavaScript -->
+                    </ul>
+                    
+                    <div class="selected-place" id="selectedPlace">
+                        <p>Выберите место из списка или на карте для голосования</p>
+                    </div>
+                    
+                    <button class="vote-btn" id="voteBtn" disabled>Голосовать</button>
+                    
+                    <div class="admin-panel">
+                        <h3>Панель администратора</h3>
+                        <button class="reset-btn" id="resetBtn">Сбросить голоса</button>
+                    </div>
+                </div>
+                
+                <div class="results-section">
+                    <h2 class="vote-title">Топ-3 места</h2>
+                    <div id="resultsContainer">
+                        <!-- Результаты будут добавлены через JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i> <span id="notificationText"></span>
+    </div>
+    
+    <footer>
+        <div class="footer-container">
+            <img src="footer2.png" alt="Футер">
+         </div>
+    </footer>
+
+    <script src="firebase-config.js"></script>
+    <script>
+        // Инициализируем Firebase с конфигом из отдельного файла
+        try {
+            firebase.initializeApp(firebaseConfig);
+            console.log('Firebase initialized successfully');
+        } catch (error) {
+            console.error('Firebase initialization error:', error);
+        }
+    </script> 
+    <script src="script.js"></script>
+
+
+</body>
+</html>
