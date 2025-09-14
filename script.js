@@ -123,7 +123,7 @@ async function voteOnServer(placeId) {
         const place = places.find(p => p.id === placeId);
         const oldVotes = place.votes;
         place.votes = oldVotes + 1;
-        
+
         updateVoteCounts();
         renderTopThreeResults();
         createMapMarkers();
