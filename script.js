@@ -44,7 +44,6 @@ const notificationText = document.getElementById('notificationText');
 const resetBtn = document.getElementById('resetBtn');
 
 let selectedPlaceId = null;
-const ADMIN_PASSWORD = "admin123";
 
 // Firebase инициализация (теперь после загрузки firebase)
 let db;
@@ -150,23 +149,6 @@ async function voteOnServer(placeId) {
     }
 }
 
-// Сброс голосов на сервере
-async function resetVotesOnServer(password) {
-    if (password !== ADMIN_PASSWORD) return false;
-    
-    try {
-        const resetData = {};
-        places.forEach(place => {
-            resetData[place.id] = 0;
-        });
-        
-        await db.collection(PLACES_COLLECTION).doc(VOTES_DOC).update(resetData);
-        return true;
-    } catch (error) {
-        console.error("Ошибка сброса:", error);
-        return false;
-    }
-}
 
 // Real-time обновления
 function setupRealtimeUpdates() {
