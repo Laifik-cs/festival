@@ -150,6 +150,7 @@ async function voteOnServer(placeId) {
 }
 
 
+
 // Real-time обновления
 function setupRealtimeUpdates() {
     db.collection(PLACES_COLLECTION).doc(VOTES_DOC)
