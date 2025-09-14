@@ -1,5 +1,4 @@
 // firebase-config.example.js
-// Скопируйте этот файл в firebase-config.js и заполните своими данными
 const firebaseConfig = {
     apiKey: "your_api_key_here", // Заглушка
     authDomain: "your_project.firebaseapp.com", // Заглушка
