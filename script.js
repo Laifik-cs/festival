@@ -147,7 +147,7 @@ async function voteOnServer(placeId) {
         
         return false;
     }
-}
+};
 
 
 // Real-time обновления
