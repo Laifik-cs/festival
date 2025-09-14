@@ -147,7 +147,7 @@ async function voteOnServer(placeId) {
         
         return false;
     }
-};
+}
 
 
 
@@ -366,6 +366,28 @@ function setupEventListeners() {
         });
     }
     
+    // Сброс голосования
+    if (resetBtn) {
+        resetBtn.addEventListener('click', async function() {
+            const password = prompt('Введите пароль администратора для сброса голосования:');
+            if (password) {
+                const success = await resetVotesOnServer(password);
+                
+                if (success) {
+                    places.forEach(place => place.votes = 0);
+                    saveToLocalStorage();
+                    updateVoteCounts();
+                    renderTopThreeResults();
+                    createMapMarkers();
+                    showNotification('Голосование сброшено!');
+                } else {
+                    showNotification('Неверный пароль!', true);
+                }
+            }
+        });
+    }
+}
+
 // Выбор места
 function selectPlace(placeId) {
     selectedPlaceId = placeId;
