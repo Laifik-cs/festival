@@ -5,6 +5,7 @@
 
 # Firebase
 .firebase/
+firebase-config.js
 firebase-debug.log
 firestore-debug.log
 
